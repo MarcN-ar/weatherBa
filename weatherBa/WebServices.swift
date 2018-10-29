@@ -23,7 +23,7 @@ class WebServices: NSObject {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data) as! NSDictionary
-                print("")
+                print(json)
             } catch let error{
                 
                 print(error)
@@ -31,6 +31,7 @@ class WebServices: NSObject {
             }
             
         }
+        task.resume()
     }
     
     
