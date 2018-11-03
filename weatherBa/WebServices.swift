@@ -10,7 +10,7 @@ import Foundation
 
 class WebServices: NSObject {
     
-    static func fetchForecast(){
+    static func fetchForecast(completionHandler:@escaping (WeatherResponse) -> ()){
         
         let urlWeather = "http://api.openweathermap.org/data/2.5/forecast/daily?q=buenos%20aires&mode=&units=metric&APPID=3d7fafd6fbae7ba96a7b3fa31bd0ce6b"
         
@@ -22,8 +22,12 @@ class WebServices: NSObject {
             guard let data = data else { return }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data) as! NSDictionary
-                print(json)
+                let forecast = try JSONDecoder().decode(WeatherResponse.self, from: data)
+                
+                completionHandler(forecast)
+                
+   //             let json = try JSONSerialization.jsonObject(with: data) as! NSDictionary
+   //             print(json)
             } catch let error{
                 
                 print(error)

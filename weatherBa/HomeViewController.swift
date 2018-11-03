@@ -9,15 +9,23 @@
 import UIKit
 
 class HomeViewController: BaseViewController  {
+    @IBOutlet weak var tableView: UITableView!
     
-    let weatherArray = ["Buenos Aires","Londres","Tokio","Madrid","Shanghai","Berlin","Bangkok"]
+    var weatherObject: WeatherResponse?
     
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        WebServices.fetchForecast()
+        WebServices.fetchForecast(completionHandler: {(result:WeatherResponse)in
+       
+            self.weatherObject = result
+            
+            DispatchQueue.main.sync(execute: {
+                self.tableView.reloadData()
+            })
+        })
         
     }
 
@@ -27,7 +35,7 @@ class HomeViewController: BaseViewController  {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return weatherArray.count
+        return weatherObject?.list.count ?? 0
         
     }
     
@@ -35,7 +43,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
         
-        cell.textLabel?.text = weatherArray[indexPath.row]
+        cell.textLabel?.text = weatherObject?.list[indexPath.row].weather.first?.main
         
         return cell
         
