@@ -7,36 +7,25 @@
 //
 
 import Foundation
+import Alamofire
 
 class WebServices: NSObject {
     
     static func fetchForecast(completionHandler:@escaping (WeatherResponse) -> ()){
         
         let urlWeather = "http://api.openweathermap.org/data/2.5/forecast/daily?q=buenos%20aires&mode=&units=metric&APPID=3d7fafd6fbae7ba96a7b3fa31bd0ce6b"
-        
-        guard let urlGet = URL(string: urlWeather) else { return }
-        
-        let request = URLRequest(url: urlGet)
-        
-        let task = URLSession.shared.dataTask(with: request) {(data,response,error) in
-            guard let data = data else { return }
-            
+        Alamofire.request(urlWeather, method: .get).responseJSON{
+            response in
             do {
+                guard let data = response.data else { return }
+                
                 let forecast = try JSONDecoder().decode(WeatherResponse.self, from: data)
                 
                 completionHandler(forecast)
-                
-   //             let json = try JSONSerialization.jsonObject(with: data) as! NSDictionary
-   //             print(json)
             } catch let error{
-                
                 print(error)
-                
             }
-            
         }
-        task.resume()
+       
     }
-    
-    
 }

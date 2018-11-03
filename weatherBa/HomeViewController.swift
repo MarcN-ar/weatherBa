@@ -21,11 +21,7 @@ class HomeViewController: BaseViewController  {
         WebServices.fetchForecast(completionHandler: {(result:WeatherResponse)in
        
             self.weatherObject = result
-            // paa ver q onda
-            
-            DispatchQueue.main.sync(execute: {
-                self.tableView.reloadData()
-            })
+            self.tableView.reloadData()
         })
         
     }
