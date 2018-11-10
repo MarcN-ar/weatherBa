@@ -20,6 +20,17 @@ class Temp: Decodable {
     let day: Double?
     let min: Double?
     let max: Double?
+    
+    func formatMinMax() -> String{
+        
+        let min = String(describing: Int(self.min ?? 0))
+        let max = String(describing: Int(self.max ?? 0))
+        
+    return "\(min)/\(max)°C"
+        
+        
+    }
+    
 }
 class Weather: Decodable {
     let main: String?

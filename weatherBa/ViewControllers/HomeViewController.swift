@@ -38,11 +38,24 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: WeatherCell.identifier, for: indexPath) as! WeatherCell
         
-        cell.textLabel?.text = weatherObject?.list[indexPath.row].weather.first?.main
+        let dateOfTheWeek = Calendar.current.date(byAdding: .day, value: indexPath.row, to: Date()) ?? Date()
         
+        let tempDay = weatherObject?.list[indexPath.row].temp.day ?? 0.0
+        
+        let tempDayFormatted = String(format: "%.1f", tempDay)
+        
+        let status = weatherObject?.list[indexPath.row].weather.first?.main ?? ""
+                
+        cell.minMaxLabel.text = weatherObject?.list[indexPath.row].temp.formatMinMax()
+        
+        cell.tempStatusLabel.text = "\(tempDayFormatted)°C \(status)"
+        
+        cell.weekDayLabel.text = DateHelpers.getFormat().string(from: dateOfTheWeek)
+      
         return cell
         
     }
 }
+
