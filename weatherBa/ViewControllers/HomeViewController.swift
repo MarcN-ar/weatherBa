@@ -12,7 +12,7 @@ class HomeViewController: BaseViewController  {
     @IBOutlet weak var tableView: UITableView!
     
     var weatherObject: WeatherResponse?
-    
+    var selectedWeather: WeatherResponse.List?
     
     
 
@@ -25,7 +25,13 @@ class HomeViewController: BaseViewController  {
         })
         
     }
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "Detail") {
+            if let destination = segue.destination as? DetailViewController{
+                destination.weatherDetail = selectedWeather
+            }
+        }
+    }
 
 }
 
@@ -57,7 +63,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
         
     }
-   
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let weather = weatherObject {
+            return "\(weather.city.name ?? ""), \(weather.city.country ?? "")"
+        } else {
+            return ""
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedWeather = weatherObject?.list [indexPath.row]
+        performSegue(withIdentifier: "Detail", sender: navigationController)
+    }
 }
 
 

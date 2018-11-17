@@ -10,29 +10,43 @@ import Foundation
 
 class WeatherResponse: Decodable {
     let list: [List]
-}
-class List: Decodable {
-    let temp: Temp
-    let weather: [Weather]
+    let city: City
     
-}
-class Temp: Decodable {
-    let day: Double?
-    let min: Double?
-    let max: Double?
-    
-    func formatMinMax() -> String{
+    class List: Decodable {
+        let temp: Temp
+        let weather: [Weather]
+        let pressure: Float?
+        let humidity: Int?
+        let rain: Float?
+        let clouds: Int?
         
-        let min = String(describing: Int(self.min ?? 0))
-        let max = String(describing: Int(self.max ?? 0))
+        class Temp: Decodable {
+            let day: Double?
+            let min: Double?
+            let max: Double?
+            
+            func formatMinMax() -> String{
+                
+                let min = String(describing: Int(self.min ?? 0))
+                let max = String(describing: Int(self.max ?? 0))
+                
+                return "\(min)/\(max)°C"
+                
+            }
+        }
         
-    return "\(min)/\(max)°C"
-        
-        
+        class Weather: Decodable {
+            let main: String?
+            
+        }
     }
     
+    class City: Decodable {
+        let name: String?
+        let country: String?
+    }
 }
-class Weather: Decodable {
-    let main: String?
-    
-}
+
+
+
+
