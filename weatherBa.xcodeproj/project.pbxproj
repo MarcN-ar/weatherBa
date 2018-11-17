@@ -19,6 +19,8 @@
 		05A0E964218DCCAB00FC1D5C /* WeatherClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0E963218DCCAB00FC1D5C /* WeatherClass.swift */; };
 		05C9DEBE219714CC00AA870C /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9DEBD219714CC00AA870C /* WeatherCell.swift */; };
 		05C9DEC12197183600AA870C /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9DEC02197183600AA870C /* DateHelpers.swift */; };
+		05D1F2FC219A2839004821D8 /* Night.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D1F2FA219A2838004821D8 /* Night.png */; };
+		05D1F2FD219A2839004821D8 /* After Noon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D1F2FB219A2839004821D8 /* After Noon.png */; };
 		986ABD0B9CDB46C66F095C0F /* Pods_weatherBaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A228DA19735002895A064C8 /* Pods_weatherBaTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		05A0E963218DCCAB00FC1D5C /* WeatherClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherClass.swift; sourceTree = "<group>"; };
 		05C9DEBD219714CC00AA870C /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		05C9DEC02197183600AA870C /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
+		05D1F2FA219A2838004821D8 /* Night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Night.png; sourceTree = "<group>"; };
+		05D1F2FB219A2839004821D8 /* After Noon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "After Noon.png"; sourceTree = "<group>"; };
 		2A228DA19735002895A064C8 /* Pods_weatherBaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weatherBaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		626A22B7633C9CA4805049A7 /* Pods-weatherBa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherBa.release.xcconfig"; path = "Pods/Target Support Files/Pods-weatherBa/Pods-weatherBa.release.xcconfig"; sourceTree = "<group>"; };
 		B5A0290C458EB0B9ECA281F3 /* Pods-weatherBa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherBa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weatherBa/Pods-weatherBa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 		05A632A621970AE900EB7437 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05D1F2FB219A2839004821D8 /* After Noon.png */,
+				05D1F2FA219A2838004821D8 /* Night.png */,
 				056808A9217B83CC00AAB9F7 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -275,8 +281,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05D1F2FD219A2839004821D8 /* After Noon.png in Resources */,
 				056808AD217B83CC00AAB9F7 /* LaunchScreen.storyboard in Resources */,
 				056808AA217B83CC00AAB9F7 /* Assets.xcassets in Resources */,
+				05D1F2FC219A2839004821D8 /* Night.png in Resources */,
 				056808A8217B83CA00AAB9F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
